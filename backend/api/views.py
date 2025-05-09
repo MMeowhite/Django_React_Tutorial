@@ -4,3 +4,7 @@ from django.http import HttpResponse
 # Create your views here.
 def home(request):
     return HttpResponse("Hello, world. You're at the home page by using django.")
+
+def check(request):
+    return HttpResponse("Hello, world. You're at the check page by using django.") 
+    
