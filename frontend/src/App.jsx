@@ -7,6 +7,8 @@ import About from './components/About'
 import Home from './components/Home'
 import Create from './components/Create'
 import NavBar from './components/NavBar'  
+import Edit from './components/Edit'
+import Delete from './components/Delete'
 
 function App() {
   const myWidth = 200
@@ -20,6 +22,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/create" element={<Create />} />
+            <Route path="/edit/:id" element={<Edit />} />
+            <Route paht="/delete/:id" element={<Delete />} />
+            <Route path="*" element={<h1>404 Not Found</h1>} />
           </Routes>
         } 
       />
