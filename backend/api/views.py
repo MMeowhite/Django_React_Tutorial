@@ -62,6 +62,9 @@ class ProjectViewSet(viewsets.ViewSet):
             return Response(serializers.errors, status=400)
 
     def destroy(self, request, pk=None):
-        project = self.queryset.get(pk=pk)
-        project.delete()
-        return Response(status=204) # Return a 204 No Content response after deleting the project
+        try:
+            project = self.queryset.get(pk=pk)
+            project.delete()
+            return Response(status=204) # Return a 204 No Content response after deleting the project
+        except Project.DoesNotExist:
+            return Response({'error': 'Project not found'}, status=404) # Return a 404 Not Found response if the project does not exist

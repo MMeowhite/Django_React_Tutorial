@@ -23,7 +23,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/create" element={<Create />} />
             <Route path="/edit/:id" element={<Edit />} />
-            <Route paht="/delete/:id" element={<Delete />} />
+            <Route path="/delete/:id" element={<Delete />} />
             <Route path="*" element={<h1>404 Not Found</h1>} />
           </Routes>
         } 

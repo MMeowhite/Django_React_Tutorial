@@ -14,7 +14,6 @@ const Edit = () => {
     const MyParam = useParams();
     const MyId = MyParam.id;
 
-
     const navigate = useNavigate();
 
     const defaultValues = {
