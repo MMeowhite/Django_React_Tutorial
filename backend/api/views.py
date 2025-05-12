@@ -9,6 +9,17 @@ from .models import *
 def home(request):
     return HttpResponse("Hello, world. You're at the home page by using django.")
 
+class EmployeesViewSet(viewsets.ViewSet):
+    permissions_classes = [permissions.AllowAny]
+    queryset = Employees.objects.all()
+    serializer_class = EmployeesSerializer
+
+    def list(self, request):
+        queryset = self.queryset
+        serializer = self.serializer_class(queryset, many=True)
+        return Response(serializer.data)
+
+
 class ProjectManagerViewSet(viewsets.ViewSet):
     permissions_classes = [permissions.AllowAny]
     queryset = ProjectManager.objects.all()

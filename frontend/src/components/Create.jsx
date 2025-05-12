@@ -10,11 +10,13 @@ import * as yup from "yup"
 import AxiosInstance from "./Axios";
 import Dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
+import MyMultiSelectField from "./forms/MyMultiSelectField";
 
 
 const Create = () => {
 
     const [projectManager, setProjectManager] = useState();
+    const [employees, setEmployees] = useState(); 
     const [loading, setLoading] = useState(true);
 
     const hardcoded_options = [
@@ -24,9 +26,13 @@ const Create = () => {
     ]
 
     const GetData = () => {
-        AxiosInstance.get('projectmanager/')
-            .then((res) => {
-                setProjectManager(res.data);
+        Promise.all([
+            AxiosInstance.get('employees/'),
+            AxiosInstance.get('projectmanager/')
+        ])
+            .then(([EmployeeRes, ProjectManagerRes]) => {
+                setEmployees(EmployeeRes.data);
+                setProjectManager(ProjectManagerRes.data);
                 setLoading(false);
             })
             .catch((error) => {
@@ -46,6 +52,8 @@ const Create = () => {
         status: '',
         start_date: null,
         end_date: null,
+        ProjectManager: null,
+        employees: []
     }
 
     const schema = yup
@@ -56,6 +64,7 @@ const Create = () => {
             start_date: yup.date().required('Start date is required field'),
             end_date: yup.date().required('End date is required field').min(yup.ref('start_date'), 'End date must be after start date'),
             ProjectManager: yup.string().required('Project manager is required field'),
+            employees: yup.array().min(1, 'At least one employee is required from the select field'),
         })
 
     // Create a form using react-hook-form and yup for validation
@@ -159,6 +168,16 @@ const Create = () => {
                                 control={control}
                                 width={'40%'}
                                 options={projectManager}
+                            />
+                        </Box>
+
+                        <Box sx={{ display: 'flex', gap: 10, marginBottom: "40px" }}>   
+                            <MyMultiSelectField
+                                label="Employees"
+                                name="employees" // Must be consistent with the backend field name!!!
+                                width={'100%'}
+                                control={control}
+                                options={employees}
                             />
                         </Box>
 
