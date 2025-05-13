@@ -18,6 +18,13 @@ class EmployeesViewSet(viewsets.ViewSet):
         queryset = self.queryset
         serializer = self.serializer_class(queryset, many=True)
         return Response(serializer.data)
+    def create(self, request):
+        serializers = self.serializer_class(data=request.data)
+        if serializers.is_valid():
+            serializers.save() # Save the new project to the database
+            return Response(serializers.data, status=201) # Return a 201 Created response with the serialized data
+        else:
+            return Response(serializers.errors, status=400) # Return a 400 Bad Request response with the validation errors
 
 
 class ProjectManagerViewSet(viewsets.ViewSet):
