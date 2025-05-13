@@ -42,7 +42,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Set the static root direct
 # }
 
 DATABASES = {
-    'default': dj_database_url.config(os.getenv('DATABASE_URL'), conn_max_age=600, ssl_require=True) # Use dj_database_url to parse the database URL
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))  # Use dj_database_url to parse the database URL
 }
 
 
