@@ -2,7 +2,8 @@ import os
 from .settings import *
 from .settings import BASE_DIR
  
-ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] # Allow all hosts for local development
+# ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] # Allow all hosts for local development
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
 CSRF_TRUSTED_ORIGINS = ['https://' + os.environ['WEBSITE_HOSTNAME']] # Allow all hosts for local development
 DEBUG = False # Disable debug mode for production
 

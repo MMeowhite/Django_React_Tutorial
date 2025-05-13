@@ -17,7 +17,7 @@ from django.core.wsgi import get_wsgi_application
 # This is useful for local development and production environments
 # The 'WEBSITE_HOSTNAME' environment variable is set in Azure App Service
 # The 'crud.deployment' settings module is used for production
-settings_module = 'crud.deployment' if 'WEBSITE_HOSTNAME' in os.environ else 'crud.settings'
+settings_module = 'crud.deployment' if 'ALLOWED_HOSTS' in os.environ else 'crud.settings'
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_module)
 
