@@ -23,8 +23,8 @@ MIDDLEWARE = [
 ]
 
 # Static files (CSS, JavaScript, Images)
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # Use WhiteNoise for static files
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Set the static root directory)
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage' # Use WhiteNoise for static files
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Set the static root directory)
 
 # For Deployment in Azure App Service
 # connection_string = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING'] # Get the connection string from the environment variable
