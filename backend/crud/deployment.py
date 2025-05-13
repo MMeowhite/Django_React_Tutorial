@@ -42,14 +42,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Set the static root direct
 # }
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',  # Use PostgreSQL as the database engine
-        'NAME': 'django_react_tutorial_database_zox1',  # Database name
-        'USER': 'django_react_tutorial_database_user',  # Database user
-        'PASSWORD': 'nDJ4p3ugZHecYuJe9K3VEjs1735xaTjg',  # Database password
-        'HOST': 'dpg-d0hfb9je5dus73avp760-a',  # Database host
-        'PORT': 5432,  # Database port
-    }
+    'default': dj_database_url.config(os.getenv('DATABASE_URL'), conn_max_age=600, ssl_require=True) # Use dj_database_url to parse the database URL
 }
 
 
