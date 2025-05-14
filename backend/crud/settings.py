@@ -58,6 +58,7 @@ MIDDLEWARE = [
 # URL Configuration
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',  # Vite + React app
+    'https://djangoreacttutorial.netlify.app' # Netlify app
 ]
 
 ROOT_URLCONF = 'crud.urls'
