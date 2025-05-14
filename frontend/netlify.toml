@@ -1,18 +1,3 @@
 [build]
   command = "npm run build"
   publish = "dist"
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Content-Type = "application/javascript; charset=UTF-8"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
