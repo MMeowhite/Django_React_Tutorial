@@ -96,7 +96,8 @@ const Create = () => {
             comments: data.comments,
             status: data.status,
             start_date: StartDate,
-            end_date: EndDate
+            end_date: EndDate,
+            employees: data.employees
         }).then((res) => {
             navigate('/')
         })
